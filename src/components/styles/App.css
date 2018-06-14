@@ -17,3 +17,15 @@
   vertical-align: top;
   margin: 15px;
 }
+
+.Container .title {
+  width: 70%;
+  padding: 20px;
+  margin: auto;
+  text-align: center;
+}
+
+.Container .title h1 {
+  font-size: 50px;
+  color: #FE0065;
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 import PokemonList from './PokemonList';
+import Searchbox from './Searchbox';
 import Detail from './Detail';
 import './styles/App.css';
 import { fetchPokemonList, fetchPokemonDetail } from '../actions/action';
@@ -54,8 +55,14 @@ class App extends Component {
     const { pokemonList } = this.props;
     const { data, loading, err } = pokemonList;
     return (
-      <div className="App">
-        {(err) ? this.renderError() : this.renderData(data, loading) }
+      <div className="Container">
+        <div className="title">
+          <h1>PokeDex</h1>
+          <Searchbox />
+        </div>
+        <div className="App">
+          {(err) ? this.renderError() : this.renderData(data, loading) }
+        </div>
       </div>
     );
   }

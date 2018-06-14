@@ -22,7 +22,7 @@ class DetailView extends Component {
     } else if (!!data) {
       return (
         <div>
-          <h1 className='data-name'>{data.name}</h1>
+          <h2 className='data-name'>{data.name}</h2>
           <p className="data-char">Height: {data.height}</p>
           <p className="data-char">Weight: {data.weight}</p>
         </div>
