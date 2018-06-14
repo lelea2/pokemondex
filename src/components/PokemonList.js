@@ -12,8 +12,8 @@ class PokemonList extends Component {
   renderList() {
     const { data } = this.props;
     const list = data.slice(0, LIMIT);
-    return list.map((item) => {
-      return <PokemonCell key={item} {...item} getDetail={this.props.getDetail} />
+    return list.map((item, i) => {
+      return <PokemonCell key={item, i} {...item} getDetail={this.props.getDetail} />
     });
   }
 

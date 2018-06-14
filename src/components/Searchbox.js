@@ -5,17 +5,20 @@ class Searchbox extends Component {
 
   constructor(props) {
     super(props);
+    this.searchInput = null;
   }
 
-  handleOnChange() {
-
+  handleSubmit(e) {
+    e.preventDefault();
+    const text = this.searchInput.value;
+    this.props.searchPokemon(text);
   }
 
   render() {
     return (
-      <div className="searchbox">
-        <input className="inputSearch" onChange={this.handleOnChange} placeholder="search" />
-      </div>
+      <form className="searchbox" onSubmit={this.handleSubmit.bind(this)}>
+        <input ref={(ref) => this.searchInput = ref } className="inputSearch" placeholder="search" />
+      </form>
     );
   }
 }

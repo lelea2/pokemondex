@@ -5,9 +5,9 @@ import PokemonList from './PokemonList';
 import Searchbox from './Searchbox';
 import Detail from './Detail';
 import './styles/App.css';
-import { fetchPokemonList, fetchPokemonDetail } from '../actions/action';
+import { fetchPokemonList, fetchPokemonDetail, searchPokemon } from '../actions/action';
 
-console.log(fetchPokemonList);
+// console.log(fetchPokemonList);
 
 class App extends Component {
   constructor() {
@@ -58,7 +58,7 @@ class App extends Component {
       <div className="Container">
         <div className="title">
           <h1>PokeDex</h1>
-          <Searchbox />
+          <Searchbox searchPokemon={this.props.searchPokemon} />
         </div>
         <div className="App">
           {(err) ? this.renderError() : this.renderData(data, loading) }
@@ -72,7 +72,8 @@ const mapDispatchToProps = (dispatch) => {
   console.log(dispatch);
   return {
     fetchPokemonList: () => dispatch(fetchPokemonList()),
-    fetchPokemonDetail: (url) => dispatch(fetchPokemonDetail(url))
+    fetchPokemonDetail: (url) => dispatch(fetchPokemonDetail(url)),
+    searchPokemon: (text) => dispatch(searchPokemon(text))
   };
 };
 

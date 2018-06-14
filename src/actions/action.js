@@ -46,7 +46,7 @@ const updateListFail = (err) => {
 export const fetchPokemonList = () => {
   return (dispatch) => {
     dispatch(intialFetchPokemonList());
-    fetchr(`${baseURL}/?limit=1000`)
+    fetchr(`${baseURL}/?limit=50`)
       .then((response) => {
         return response.json();
       })
@@ -109,4 +109,12 @@ export const fetchPokemonDetail = (url) => {
         return dispatch(updateDetailFail(error));
       });
   };
+};
+
+/*********************************************************************/
+/********* Search Pokemon ********************************************/
+/*********************************************************************/
+export const searchPokemon = (text) => {
+  const url = `${baseURL}/${text}`;
+  return fetchPokemonDetail(url);
 };
