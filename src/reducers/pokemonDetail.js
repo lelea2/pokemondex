@@ -4,7 +4,7 @@ import {
 
 const defaultState = {
   loading: false,
-  data: {},
+  data: null,
   err: null
 };
 
