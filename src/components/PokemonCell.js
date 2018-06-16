@@ -4,9 +4,6 @@ import './styles/PokemonCell.css';
 let img = `https://img.pokemondb.net/artwork/@@@NAME@@@.jpg`;
 
 class PokemonCell extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   getDetail() {
     const { url } = this.props;

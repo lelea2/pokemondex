@@ -1,45 +1,58 @@
 import React, { Component } from 'react';
 import './styles/Detail.css';
+import t from '../translations';
 
 let img = `https://img.pokemondb.net/artwork/@@@NAME@@@.jpg`;
 
 class DetailView extends Component {
-  constructor() {
-    super();
+
+  getEnName(data) {
+    let obj = {};
+    try {
+      obj = data.filter((item) => {
+        return item.language.name === 'en';
+      })[0];
+    } catch (ex) {
+      // handle error here
+    }
+    return obj;
   }
 
   renderLoading() {
     return (
-      <div>Loading</div>
+      <p>{t.loading_detail}</p>
     );
   }
 
+  renderEmpty(data, err) {
+    return (err) ? (
+      <p>{t.renderDetailError}</p>
+    ) : null;
+  }
+
   renderData(data, err) {
-    if (err) {
-      return (
-        <div>Error getting detail</div>
-      );
-    } else if (!!data) {
-      return (
-        <div>
-          <h2 className='data-name'>{data.name}</h2>
-          <p className="data-char">Height: {data.height}</p>
-          <p className="data-char">Weight: {data.weight}</p>
-        </div>
-      );
-    } else {
-      return null;
-    }
+    const { name, id, height, weight, types, habitat, species } = t.detail;
+    return (err || !data) ? this.renderEmpty(data, err) : (
+      <div>
+        <h2 className='data-name'>{name}: {data.name} -- {id}: {data.id}</h2>
+        <p className="data-char">{height}: {data.height} -- {weight}: {data.weight}</p>
+        <p className="data-char">{types}: {data.types.map((val) => {
+          return (val.type) ? val.type.name : ''
+        }).join(', ')}</p>
+        <p className="data-char">{species}: {this.getEnName(data.species.names).name} -- {habitat} : {data.species.habitat.name}</p>
+      </div>
+    );
   }
 
   render() {
     const { data, err, loading } = this.props;
+    console.log(this.props);
     const imgUrl = (data && data.name) ? img.replace('@@@NAME@@@', data.name) : null;
     return (
       <section className="detail-view">
-        <img className='sprite-image' src={imgUrl} />
+        <img className='sprite-image' src={imgUrl} alt={data.name} />
         <div className='data-wrapper'>
-          {loading ? this.renderLoading : (
+          {loading ? this.renderLoading() : (
             this.renderData(data, err)
           )}
         </div>

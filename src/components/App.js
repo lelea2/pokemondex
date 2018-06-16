@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types';
 import PokemonList from './PokemonList';
 import Searchbox from './Searchbox';
 import Detail from './Detail';
 import './styles/App.css';
 import { fetchPokemonList, fetchPokemonDetail, searchPokemon } from '../actions/action';
-
-// console.log(fetchPokemonList);
+import t from '../translations';
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {};
   }
 
   componentWillMount() {
@@ -21,7 +18,7 @@ class App extends Component {
 
   renderError() {
     return (
-      <p>Error Loading Pokemon list</p>
+      <p>{t.renderError}</p>
     );
   }
 
@@ -39,7 +36,7 @@ class App extends Component {
   renderData(data, loading) {
     if (loading) {
       return (
-        <p>Loading....</p>
+        <p>{t.loading_list}</p>
       );
     } else {
       return (
@@ -57,7 +54,7 @@ class App extends Component {
     return (
       <div className="Container">
         <div className="title">
-          <h1>PokeDex</h1>
+          <h1>{t.title}</h1>
           <Searchbox searchPokemon={this.props.searchPokemon} />
         </div>
         <div className="App">

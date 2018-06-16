@@ -5,6 +5,7 @@ import {
 } from '../constants/actionTypes';
 require('es6-promise').polyfill();
 const baseURL = 'https://pokeapi.co/api/v2/pokemon';
+const LIMIT = 151;
 
 /*********************************************************************/
 /********* Pokemon list **********************************************/
@@ -46,7 +47,7 @@ const updateListFail = (err) => {
 export const fetchPokemonList = () => {
   return (dispatch) => {
     dispatch(intialFetchPokemonList());
-    fetchr(`${baseURL}/?limit=50`)
+    fetchr(`${baseURL}/?limit=${LIMIT}`)
       .then((response) => {
         return response.json();
       })
@@ -73,12 +74,15 @@ const initialFetchPokemonDetail = () => {
   }
 };
 
-const updateDetailSuccess = (data) => {
+const updateDetailSuccess = ({ data, species }) => {
   return {
     type: GET_POKEMON_DETAIL,
     payload: {
       loading: false,
-      data,
+      data: {
+        ...data,
+        species
+      },
       err: null
     }
   }
@@ -102,8 +106,15 @@ export const fetchPokemonDetail = (url) => {
       .then((response) => {
         return response.json();
       })
-      .then((response) => {
-        return dispatch(updateDetailSuccess(response));
+      .then((data) => {
+        const { species } = data;
+        fetchr(`${species.url}`).then((respSpecies) => {
+          return respSpecies.json();
+        }).then((species) => {
+          return dispatch(updateDetailSuccess({data, species}));
+        }).catch((err) => {
+          return dispatch(updateDetailFail(err));
+        });
       })
       .catch((error) => {
         return dispatch(updateDetailFail(error));

@@ -6,7 +6,7 @@
   height: 80%;
   padding-left: 10px;
   margin: 50px auto;
-  background-color: #FE0065;
+  background-color: #FF69B4;
   border-radius: 10px;
   box-shadow: 0 14px 45px rgba(0, 0, 0, 0.22), 0 18px 45px rgba(0, 0, 0, 0.22);
 }
@@ -27,5 +27,5 @@
 
 .Container .title h1 {
   font-size: 50px;
-  color: #FE0065;
+  color: #FF69B4  ;
 }

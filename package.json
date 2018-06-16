@@ -21,12 +21,20 @@
   "devDependencies": {
     "nodemon": "^1.17.5",
     "react-scripts": "1.1.4",
-    "redux-devtools-extension": "^2.13.2"
+    "redux-devtools-extension": "^2.13.2",
+    "babel-core": "6.26.0",
+    "babel-preset-react-app": "3.0.3",
+    "enzyme": "3.0.0",
+    "enzyme-adapter-react-16": "1.0.0",
+    "enzyme-to-json": "3.0.1",
+    "jest": "21.2.1",
+    "raf": "3.3.2",
+    "react-test-renderer": "16.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "./node_modules/.bin/jest",
     "eject": "react-scripts eject",
     "watch": "nodemon --exec 'react-scripts start' --watch src --watch public"
   }
