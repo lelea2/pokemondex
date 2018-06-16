@@ -23,9 +23,8 @@ class App extends Component {
     this.props.fetchPokemonDetail(url);
   }
 
-  resetList() {
+  reset() {
     this.props.resetPokemon();
-    this.props.fetchPokemonList();
   }
 
   renderDetail() {
@@ -35,22 +34,22 @@ class App extends Component {
     );
   }
 
-  renderData(data, loading) {
+  renderData({ data, loading, pokemonDetail }) {
     return (loading) ? (
       <p>{t.loading_list}</p>
     ) : (
       <div>
         <div className="reset-region">
-          <button className="reset" onClick={this.resetList.bind(this)}>{t.resetBtn}</button>
+          <button className="reset" onClick={this.reset.bind(this)}>{t.resetBtn}</button>
         </div>
-        <PokemonList data={data} getDetail={this.getDetail.bind(this)} />
+        <PokemonList data={data} pokemonDetail={pokemonDetail} getDetail={this.getDetail.bind(this)} />
         {this.renderDetail()}
       </div>
     );
   }
 
   render() {
-    const { pokemonList } = this.props;
+    const { pokemonList, pokemonDetail } = this.props;
     const { data, loading, err } = pokemonList;
     return (
       <div className="Container">
@@ -59,7 +58,7 @@ class App extends Component {
           <Searchbox searchPokemon={this.props.searchPokemon} />
         </div>
         <div className="App">
-          {(err) ? this.renderError() : this.renderData(data, loading) }
+          {(err) ? this.renderError() : this.renderData({ data, loading, pokemonDetail }) }
         </div>
       </div>
     );

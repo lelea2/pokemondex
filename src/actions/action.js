@@ -2,7 +2,8 @@ import * as fetchr from 'isomorphic-fetch';
 import {
   GET_POKEMON_LIST,
   GET_POKEMON_DETAIL,
-  RESET_POKEMON_DETAIL
+  RESET_POKEMON_DETAIL,
+  SEARCH_POKEMON_DETAIL
 } from '../constants/actionTypes';
 require('es6-promise').polyfill();
 const baseURL = 'https://pokeapi.co/api/v2/pokemon';
@@ -64,9 +65,9 @@ const fetchPokemonList = () => {
 /*********************************************************************/
 /********* Pokemon detail ********************************************/
 /*********************************************************************/
-const initialFetchPokemonDetail = () => {
+const initialFetchPokemonDetail = (type) => {
   return {
-    type: GET_POKEMON_DETAIL,
+    type,
     payload: {
       loading: true,
       data: {},
@@ -75,9 +76,9 @@ const initialFetchPokemonDetail = () => {
   }
 };
 
-const updateDetailSuccess = ({ data, species }) => {
+const updateDetailSuccess = ({ data, species }, type) => {
   return {
-    type: GET_POKEMON_DETAIL,
+    type,
     payload: {
       loading: false,
       data: {
@@ -89,9 +90,9 @@ const updateDetailSuccess = ({ data, species }) => {
   }
 };
 
-const updateDetailFail = (err) => {
+const updateDetailFail = (err, type) => {
   return {
-    type: GET_POKEMON_DETAIL,
+    type,
     payload: {
       loading: false,
       data: {},
@@ -100,9 +101,9 @@ const updateDetailFail = (err) => {
   }
 };
 
-const fetchPokemonDetail = (url) => {
+const fetchPokemonDetail = (url, type=GET_POKEMON_DETAIL) => {
   return (dispatch) => {
-    dispatch(initialFetchPokemonDetail());
+    dispatch(initialFetchPokemonDetail(type));
     fetchr(`${url}`)
       .then((response) => {
         return response.json();
@@ -112,13 +113,13 @@ const fetchPokemonDetail = (url) => {
         fetchr(`${species.url}`).then((respSpecies) => {
           return respSpecies.json();
         }).then((species) => {
-          return dispatch(updateDetailSuccess({data, species}));
+          return dispatch(updateDetailSuccess({data, species}, type));
         }).catch((err) => {
-          return dispatch(updateDetailFail(err));
+          return dispatch(updateDetailFail(err, type));
         });
       })
       .catch((error) => {
-        return dispatch(updateDetailFail(error));
+        return dispatch(updateDetailFail(error, type));
       });
   };
 };
@@ -148,7 +149,7 @@ const resetPokemon = () => {
 /*********************************************************************/
 const searchPokemon = (text) => {
   const url = `${baseURL}/${text}`;
-  return fetchPokemonDetail(url);
+  return fetchPokemonDetail(url, SEARCH_POKEMON_DETAIL);
 };
 
 export {

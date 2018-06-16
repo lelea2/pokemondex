@@ -10,6 +10,10 @@
   justify-content: center;
 }
 
+.detail-view h2 {
+  color: #fff;
+}
+
 .sprite-image {
   width: 200px;
   height: 200px;

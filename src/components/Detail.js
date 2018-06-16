@@ -34,7 +34,7 @@ class DetailView extends Component {
     const { name, id, height, weight, types, habitat, species } = t.detail;
     return (err || !data) ? this.renderEmpty(data, err) : (
       <div>
-        <h2 className='data-name'>{name}: {data.name} -- {id}: {data.id}</h2>
+        <h3 className='data-name'>{name}: {data.name} -- {id}: {data.id}</h3>
         <p className="data-char">{height}: {data.height} -- {weight}: {data.weight}</p>
         <p className="data-char">{types}: {data.types.map((val) => {
           return (val.type) ? val.type.name : ''
@@ -45,11 +45,12 @@ class DetailView extends Component {
   }
 
   render() {
-    const { data, err, loading } = this.props;
+    const { data, err, loading, search_result } = this.props;
     const name = (data && data.name) ? data.name : '';
     const imgUrl = (name) ? img.replace('@@@NAME@@@', name) : null;
     return (
       <section className="detail-view">
+        {search_result ? <h2>{loading? t.searchHeaderLoad : t.searchHeader}</h2> : null}
         <img className='sprite-image' src={imgUrl} alt={name} />
         <div className='data-wrapper'>
           {loading ? this.renderLoading() : (

@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import PokemonCell from './PokemonCell';
+import PropTypes from 'prop-types';
 import './styles/PokemonList.css';
 
 class PokemonList extends Component {
 
   renderList() {
-    const { data } = this.props;
+    const { data, pokemonDetail } = this.props;
+    const currentName = (pokemonDetail) ? (pokemonDetail.name) : null;
     return data.map((item, i) => {
-      return <PokemonCell key={item, i} {...item} getDetail={this.props.getDetail} />
+      return <PokemonCell
+        key={item, i}
+        {...item}
+        getDetail={this.props.getDetail}
+        active={(item.name === currentName) ? true : false}
+      />
     });
   }
 
@@ -19,5 +26,11 @@ class PokemonList extends Component {
     );
   }
 }
+
+PokemonList.propTypes = {
+  data: PropTypes.array,
+  pokemonDetail: PropTypes.object,
+  getDetail: PropTypes.func
+};
 
 export default PokemonList;

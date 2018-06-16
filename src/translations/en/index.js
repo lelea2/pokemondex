@@ -6,6 +6,8 @@ export default {
   loading_list: 'Loading...',
   resetBtn: 'Reset Pokemon list',
   resetText: 'Reset Text',
+  searchHeader: 'Search Result',
+  searchHeaderLoad: 'Searching...',
   detail: {
     name: 'Name',
     id: 'Id',
