@@ -11,3 +11,8 @@
   border-radius: 2px;
   font-size: 20px;
 }
+
+.searchbox a {
+  cursor: pointer;
+  color: #0000ff;
+}

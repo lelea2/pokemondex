@@ -46,11 +46,11 @@ class DetailView extends Component {
 
   render() {
     const { data, err, loading } = this.props;
-    console.log(this.props);
-    const imgUrl = (data && data.name) ? img.replace('@@@NAME@@@', data.name) : null;
+    const name = (data && data.name) ? data.name : '';
+    const imgUrl = (name) ? img.replace('@@@NAME@@@', name) : null;
     return (
       <section className="detail-view">
-        <img className='sprite-image' src={imgUrl} alt={data.name} />
+        <img className='sprite-image' src={imgUrl} alt={name} />
         <div className='data-wrapper'>
           {loading ? this.renderLoading() : (
             this.renderData(data, err)

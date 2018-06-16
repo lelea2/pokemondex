@@ -4,13 +4,10 @@ import PokemonList from './PokemonList';
 import Searchbox from './Searchbox';
 import Detail from './Detail';
 import './styles/App.css';
-import { fetchPokemonList, fetchPokemonDetail, searchPokemon } from '../actions/action';
+import { fetchPokemonList, fetchPokemonDetail, resetPokemon, searchPokemon } from '../actions/action';
 import t from '../translations';
 
 class App extends Component {
-  constructor() {
-    super();
-  }
 
   componentWillMount() {
     this.props.fetchPokemonList();
@@ -26,6 +23,11 @@ class App extends Component {
     this.props.fetchPokemonDetail(url);
   }
 
+  resetList() {
+    this.props.resetPokemon();
+    this.props.fetchPokemonList();
+  }
+
   renderDetail() {
     const { pokemonDetail } = this.props;
     return (
@@ -34,18 +36,17 @@ class App extends Component {
   }
 
   renderData(data, loading) {
-    if (loading) {
-      return (
-        <p>{t.loading_list}</p>
-      );
-    } else {
-      return (
-        <div>
-          <PokemonList data={data} getDetail={this.getDetail.bind(this)} />
-          {this.renderDetail()}
+    return (loading) ? (
+      <p>{t.loading_list}</p>
+    ) : (
+      <div>
+        <div className="reset-region">
+          <button className="reset" onClick={this.resetList.bind(this)}>{t.resetBtn}</button>
         </div>
-      );
-    }
+        <PokemonList data={data} getDetail={this.getDetail.bind(this)} />
+        {this.renderDetail()}
+      </div>
+    );
   }
 
   render() {
@@ -66,10 +67,10 @@ class App extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  console.log(dispatch);
   return {
     fetchPokemonList: () => dispatch(fetchPokemonList()),
     fetchPokemonDetail: (url) => dispatch(fetchPokemonDetail(url)),
+    resetPokemon: () => dispatch(resetPokemon()),
     searchPokemon: (text) => dispatch(searchPokemon(text))
   };
 };

@@ -4,6 +4,8 @@ export default {
   title: 'PokemonDex',
   loading_detail: 'Loading pokemon detail...',
   loading_list: 'Loading...',
+  resetBtn: 'Reset Pokemon list',
+  resetText: 'Reset Text',
   detail: {
     name: 'Name',
     id: 'Id',

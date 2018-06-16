@@ -1,7 +1,8 @@
 import * as fetchr from 'isomorphic-fetch';
 import {
   GET_POKEMON_LIST,
-  GET_POKEMON_DETAIL
+  GET_POKEMON_DETAIL,
+  RESET_POKEMON_DETAIL
 } from '../constants/actionTypes';
 require('es6-promise').polyfill();
 const baseURL = 'https://pokeapi.co/api/v2/pokemon';
@@ -44,7 +45,7 @@ const updateListFail = (err) => {
   }
 };
 
-export const fetchPokemonList = () => {
+const fetchPokemonList = () => {
   return (dispatch) => {
     dispatch(intialFetchPokemonList());
     fetchr(`${baseURL}/?limit=${LIMIT}`)
@@ -99,7 +100,7 @@ const updateDetailFail = (err) => {
   }
 };
 
-export const fetchPokemonDetail = (url) => {
+const fetchPokemonDetail = (url) => {
   return (dispatch) => {
     dispatch(initialFetchPokemonDetail());
     fetchr(`${url}`)
@@ -123,9 +124,37 @@ export const fetchPokemonDetail = (url) => {
 };
 
 /*********************************************************************/
+/********* Reset pokemon  ********************************************/
+/*********************************************************************/
+const resetDetail = () => {
+  return {
+    type: RESET_POKEMON_DETAIL,
+    payload: {
+      loading: false,
+      data: null,
+      err: null
+    }
+  }
+};
+
+const resetPokemon = () => {
+  return (dispatch) => {
+    dispatch(resetDetail());
+  };
+}
+
+/*********************************************************************/
 /********* Search Pokemon ********************************************/
 /*********************************************************************/
-export const searchPokemon = (text) => {
+const searchPokemon = (text) => {
   const url = `${baseURL}/${text}`;
   return fetchPokemonDetail(url);
 };
+
+export {
+  fetchPokemonList,
+  fetchPokemonDetail,
+  resetPokemon,
+  searchPokemon
+};
+

@@ -1,5 +1,6 @@
 import {
-  GET_POKEMON_DETAIL
+  GET_POKEMON_DETAIL,
+  RESET_POKEMON_DETAIL
 } from '../constants/actionTypes';
 
 const defaultState = {
@@ -11,6 +12,8 @@ const defaultState = {
 export default (state = defaultState, action = {}) => {
   switch (action.type) {
     case GET_POKEMON_DETAIL:
+      return action.payload;
+    case RESET_POKEMON_DETAIL:
       return action.payload;
     default:
       return state;

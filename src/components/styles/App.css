@@ -22,10 +22,26 @@
   width: 70%;
   padding: 20px;
   margin: auto;
-  text-align: center;
 }
 
 .Container .title h1 {
   font-size: 50px;
-  color: #FF69B4  ;
+  color: #FF69B4;
+  text-align: center;
+}
+
+.App .reset-region {
+  width: 80%;
+  display: block;
+  margin: 15px auto;
+  text-align: center;
+}
+
+.App .reset-region button {
+  font-size: 18px;
+  color: #fff;
+  padding: 15px 10px;
+  border: 1px solid #0080ff;
+  border-radius: 2px;
+  background: #3333ff;
 }

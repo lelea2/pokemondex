@@ -1,23 +1,44 @@
 import React, { Component } from 'react';
 import './styles/Searchbox.css';
+import t from '../translations';
 
 class Searchbox extends Component {
 
   constructor(props) {
     super(props);
-    this.searchInput = null;
+    this.state = {
+      searchText: ''
+    };
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const text = this.searchInput.value;
-    this.props.searchPokemon(text);
+    this.props.searchPokemon(this.state.searchText);
+  }
+
+  handleOnChange(e) {
+    const searchText = e.target.value;
+    this.setState({
+      searchText
+    });
+  }
+
+  resetText() {
+    this.setState({
+      searchText: ''
+    });
   }
 
   render() {
     return (
       <form className="searchbox" onSubmit={this.handleSubmit.bind(this)}>
-        <input ref={(ref) => this.searchInput = ref } className="inputSearch" placeholder="search" />
+        <input
+          className="inputSearch"
+          placeholder="search"
+          onChange={this.handleOnChange.bind(this)}
+          value={this.state.searchText}
+        />
+        <a onClick={this.resetText.bind(this)}><i>{t.resetText}</i></a>
       </form>
     );
   }
