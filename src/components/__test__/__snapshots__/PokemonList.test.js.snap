@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: PokemonList PokemonList - default renders correctly 1`] = `
+<section
+  className="poke-list"
+>
+  <button
+    className="poke-cell"
+    onClick={[Function]}
+  >
+    <img
+      alt="Pikachu"
+      height="50"
+      src="https://img.pokemondb.net/artwork/Pikachu.jpg"
+      width="50"
+    />
+  </button>
+  <button
+    className="poke-cell"
+    onClick={[Function]}
+  >
+    <img
+      alt="venusaur"
+      height="50"
+      src="https://img.pokemondb.net/artwork/venusaur.jpg"
+      width="50"
+    />
+  </button>
+</section>
+`;
+
+exports[`Component: PokemonList PokemonList - with active pokemondetail renders correctly 1`] = `
+<section
+  className="poke-list"
+>
+  <button
+    className="poke-cell"
+    onClick={[Function]}
+  >
+    <img
+      alt="Pikachu"
+      height="50"
+      src="https://img.pokemondb.net/artwork/Pikachu.jpg"
+      width="50"
+    />
+  </button>
+  <button
+    className="poke-cell active"
+    onClick={[Function]}
+  >
+    <img
+      alt="venusaur"
+      height="50"
+      src="https://img.pokemondb.net/artwork/venusaur.jpg"
+      width="50"
+    />
+  </button>
+</section>
+`;

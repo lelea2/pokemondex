@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Searchbox renders correctly Right 1`] = `
+exports[`Component: Searchbox Searchbox renders correctly 1`] = `
 <form
   className="searchbox"
   onSubmit={[Function]}

@@ -13,7 +13,7 @@ class Searchbox extends Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
+    e && e.preventDefault();
     this.props.searchPokemon(this.state.searchText);
   }
 

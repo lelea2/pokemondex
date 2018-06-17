@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './styles/PokemonCell.css';
 import PropTypes from 'prop-types';
-import * as clss from 'classnames';
+import clss from 'classnames';
 
 let img = `https://img.pokemondb.net/artwork/@@@NAME@@@.jpg`;
 
@@ -27,9 +27,10 @@ class PokemonCell extends Component {
 }
 
 PokemonCell.propTypes = {
-  name: PropTypes.name,
-  url: PropTypes.url,
-  active: PropTypes.bool
+  name: PropTypes.string,
+  url: PropTypes.string,
+  active: PropTypes.bool,
+  getDetail: PropTypes.func
 };
 
 export default PokemonCell;

@@ -7,7 +7,7 @@ import './styles/App.css';
 import { fetchPokemonList, fetchPokemonDetail, resetPokemon, searchPokemon } from '../actions/action';
 import t from '../translations';
 
-class App extends Component {
+export class App extends Component {
 
   componentWillMount() {
     this.props.fetchPokemonList();

@@ -10,7 +10,7 @@ class PokemonList extends Component {
     const currentName = (pokemonDetail) ? (pokemonDetail.name) : null;
     return data.map((item, i) => {
       return <PokemonCell
-        key={item, i}
+        key={`${i}${item}`}
         {...item}
         getDetail={this.props.getDetail}
         active={(item.name === currentName) ? true : false}

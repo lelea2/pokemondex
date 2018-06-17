@@ -1,5 +1,6 @@
 import en from './en';
 
+// TODO: this is short cut for small intl sets, could be extended with react-intl in the future
 const localeData = {
   en
 };

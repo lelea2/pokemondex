@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: PokemonCell PokemonCell - active renders correctly 1`] = `
+<button
+  className="poke-cell active"
+  onClick={[Function]}
+>
+  <img
+    alt="Pikachu"
+    height="50"
+    src="https://img.pokemondb.net/artwork/Pikachu.jpg"
+    width="50"
+  />
+</button>
+`;
+
+exports[`Component: PokemonCell PokemonCell renders correctly 1`] = `
+<button
+  className="poke-cell"
+  onClick={[Function]}
+>
+  <img
+    alt="Pikachu"
+    height="50"
+    src="https://img.pokemondb.net/artwork/Pikachu.jpg"
+    width="50"
+  />
+</button>
+`;

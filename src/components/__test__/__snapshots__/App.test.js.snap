@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: App App - snapshot 1`] = `
+<div
+  className="Container"
+>
+  <div
+    className="title"
+  >
+    <h1>
+      PokemonDex
+    </h1>
+    <form
+      className="searchbox"
+      onSubmit={[Function]}
+    >
+      <input
+        className="inputSearch"
+        onChange={[Function]}
+        placeholder="search"
+        value=""
+      />
+      <a
+        onClick={[Function]}
+      >
+        <i>
+          Reset Text
+        </i>
+      </a>
+    </form>
+  </div>
+  <div
+    className="App"
+  >
+    <div>
+      <div
+        className="reset-region"
+      >
+        <button
+          className="reset"
+          onClick={[Function]}
+        >
+          Reset Pokemon Detail View
+        </button>
+      </div>
+      <section
+        className="poke-list"
+      >
+        <button
+          className="poke-cell"
+          onClick={[Function]}
+        >
+          <img
+            alt="Pikachu"
+            height="50"
+            src="https://img.pokemondb.net/artwork/Pikachu.jpg"
+            width="50"
+          />
+        </button>
+        <button
+          className="poke-cell"
+          onClick={[Function]}
+        >
+          <img
+            alt="Pikacha"
+            height="50"
+            src="https://img.pokemondb.net/artwork/Pikacha.jpg"
+            width="50"
+          />
+        </button>
+      </section>
+      <section
+        className="detail-view"
+      >
+        <img
+          alt=""
+          className="sprite-image"
+          src={null}
+        />
+        <div
+          className="data-wrapper"
+        />
+      </section>
+    </div>
+  </div>
+</div>
+`;
