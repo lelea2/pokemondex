@@ -4,7 +4,7 @@ export default {
   title: 'PokemonDex',
   loading_detail: 'Loading pokemon detail...',
   loading_list: 'Loading...',
-  resetBtn: 'Reset Pokemon list',
+  resetBtn: 'Reset Pokemon Detail View',
   resetText: 'Reset Text',
   searchHeader: 'Search Result',
   searchHeaderLoad: 'Searching...',

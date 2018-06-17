@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Searchbox renders correctly Right 1`] = `
+<form
+  className="searchbox"
+  onSubmit={[Function]}
+>
+  <input
+    className="inputSearch"
+    onChange={[Function]}
+    placeholder="search"
+    value=""
+  />
+  <a
+    onClick={[Function]}
+  >
+    <i>
+      Reset Text
+    </i>
+  </a>
+</form>
+`;

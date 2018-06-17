@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './styles/Searchbox.css';
 import t from '../translations';
 
@@ -43,5 +44,9 @@ class Searchbox extends Component {
     );
   }
 }
+
+Searchbox.propTypes = {
+  searchPokemon: PropTypes.func
+};
 
 export default Searchbox;
