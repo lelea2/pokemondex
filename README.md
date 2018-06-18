@@ -10,9 +10,9 @@ This repo is set up with create-react-app seeding originally
 ##### Structure
 ```
 src/
-├── actions
-├── components
-├── constants
+├── actions # handle redux action
+├── components # all UI components
+├── constants # all action name
 ├── index.css
 ├── index.js
 ├── reducer.js
