@@ -72,10 +72,10 @@ All files                  |    34.54 |    30.95 |    24.32 |    42.68 |        
 
 
 ##### Features
-1.1) Navigate to http://localhost:3000, display the first 151 pokemon on left pane
-1.2) User click on one of the pokemon badge, the right panel should display pokemon's detail
-2.1) Searchbar: search by pokemon id or name. Enter text and hit enter to get result
-2.2) Result displayed on the right panel
-2.3) Error message will be displayed for invalid search.
+* 1.1) Navigate to http://localhost:3000, display the first 151 pokemon on left pane
+* 1.2) User click on one of the pokemon badge, the right panel should display pokemon's detail
+* 2.1) Searchbar: search by pokemon id or name. Enter text and hit enter to get result
+* 2.2) Result displayed on the right panel
+* 2.3) Error message will be displayed for invalid search.
 
 
